@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    #main{
+        position: relative;
+        left: 45%;
+        top: 242px;
+        width: 350px;
+        height: fit-content;
+        background-color:whitesmoke;
+       border-radius: 10px;
+    }
+    h1{
+        position: relative;
+        left: 20%;
+        font-style: italic;
+        font-family:  Geneva, Tahoma, sans-serif;
+        color: cadetblue;
+
+    }
+    #add_task{
+        color: rgb(144, 189, 20);
+        background-color: orange;
+        display: inline-block;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 3px;
+        border-bottom-style: solid;
+        border-bottom-width: 3px;
+        transition: text-shadow 0.3s ease;
+    }
+    #add_task:active {
+  position: relative;
+  top: 1px;
+  border-bottom-width: 2px;
+}
+input[type=text] {
+    
+  display: inline-block;
+  color: black;
+  padding: 10px;
+  width: 250px;
+  box-sizing: border-box;
+  background-color: rgba(0,0,0,0.25);
+  border: none;
+  border-radius: 2px;
+  margin: 10px auto;
+  transition:background-color 0.5s ease;
+}
+
+    </style>
+<script>
+    function add_task (){
+           var  lab_value = document.getElementById('input_task').value;
+            var items = document.createElement("INPUT");
+            var label = document.createElement("label");
+            var br = document.createElement("br");
+            items.setAttribute("type", "checkbox");
+            items.setAttribute("class", "checkbox");
+            items.setAttribute("onchange", "line_on()"); 
+            label.setAttribute("class", "label");
+        var element = document.getElementById("list");
+        element.appendChild(items);
+        element.appendChild(label);
+        element.appendChild(br);
+        var node = document.createTextNode(lab_value);
+        label.appendChild(node);
+    }
+        function line_on() {
+                var myCollection = document.getElementsByClassName("checkbox")
+                var myCollection1 = document.getElementsByTagName("label");
+                for (let i = 0; i < myCollection.length; i++)
+                 {
+                    if(myCollection[i].checked==true)
+                       myCollection1[i].style.textDecoration = "line-through"
+                    else{
+                        myCollection1[i].style.textDecoration = "none";
+                    }
+                   }
+             }
+
+</script>
+
+<body>
+    <div id="main">
+    <h1>  TO DO LIST </h1>
+    <input type="text"  id="input_task" >
+    <input type="button" value="add" id="add_task" onclick="add_task ()">
+    <div id="list">
+    </div>
+    </div>
+</body>
+</html>
